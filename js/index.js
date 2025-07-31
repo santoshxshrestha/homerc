@@ -31,10 +31,20 @@ let todos = [];
 
 function saveTodos() {
     try {
-        // Using memory storage instead of localStorage
-        // todos array is already in memory
+        localStorage.setItem("todos", JSON.stringify(todos));
     } catch (e) {
         console.log("Storage not available");
+    }
+}
+
+function loadTodos() {
+    try {
+        const stored = localStorage.getItem("todos");
+        if (stored) {
+            todos = JSON.parse(stored);
+        }
+    } catch (e) {
+        console.log("Could not load todos", e);
     }
 }
 
@@ -64,6 +74,7 @@ function addTodo() {
         todos.push({ text, completed: false });
         input.value = "";
         saveTodos();
+        loadTodos();
         renderTodos();
     }
 }
@@ -244,6 +255,7 @@ document.getElementById("todoInput").addEventListener("keypress", (e) => {
 window.addEventListener("load", () => {
     updateDateTime();
     setInterval(updateDateTime, 1000);
+    loadTodos();
     renderTodos();
     generateCalendar();
 });
