@@ -91,60 +91,6 @@ function deleteTodo(index) {
     renderTodos();
 }
 
-// Calendar functionality
-function generateCalendar() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const today = now.getDate();
-
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const daysInPrevMonth = new Date(year, month, 0).getDate();
-
-    const calendar = document.getElementById("calendar");
-    calendar.innerHTML = "";
-
-    // Header
-    const headerRow = calendar.insertRow();
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    daysOfWeek.forEach((day) => {
-        const th = document.createElement("th");
-        th.textContent = day;
-        headerRow.appendChild(th);
-    });
-
-    let date = 1;
-    let nextMonthDate = 1;
-
-    for (let i = 0; i < 6; i++) {
-        const row = calendar.insertRow();
-
-        for (let j = 0; j < 7; j++) {
-            const cell = row.insertCell();
-
-            if (i === 0 && j < firstDay) {
-                // Previous month days
-                cell.textContent = daysInPrevMonth - firstDay + j + 1;
-                cell.className = "other-month";
-            } else if (date > daysInMonth) {
-                // Next month days
-                cell.textContent = nextMonthDate++;
-                cell.className = "other-month";
-            } else {
-                // Current month days
-                cell.textContent = date;
-                if (date === today) {
-                    cell.className = "today";
-                }
-                date++;
-            }
-        }
-
-        if (date > daysInMonth && nextMonthDate > 7) break;
-    }
-}
-
 // Canvas functionality
 let canvas, ctx;
 let isDrawing = false;
@@ -257,5 +203,4 @@ window.addEventListener("load", () => {
     setInterval(updateDateTime, 1000);
     loadTodos();
     renderTodos();
-    generateCalendar();
 });
