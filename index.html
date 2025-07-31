@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+</head>
+
+<body>
+    <div class="container" id="homepage">
+        <header class="header">
+            <div class="datetime-section">
+                <h1>Dashboard</h1>
+                <div class="datetime" id="datetime"></div>
+            </div>
+            <div class="nav-tools">
+                <button class="nav-btn canvas-btn" onclick="showCanvas()">
+                    Canvas
+                </button>
+            </div>
+        </header>
+
+        <section class="quick-tools">
+            <h2>Quick Access Tools</h2>
+            <div class="tools-grid">
+                <a href="https://chat.openai.com" target="_blank" class="tool-card">
+                    <h3>ChatGPT</h3>
+                    <p>AI assistant for questions and tasks</p>
+                </a>
+                <a href="https://claude.ai" target="_blank" class="tool-card">
+                    <h3>Claude</h3>
+                    <p>Anthropic's AI assistant</p>
+                </a>
+                <a href="https://nixos.org/manual/nixos/stable/" target="_blank" class="tool-card">
+                    <h3>NixOS Docs</h3>
+                    <p>NixOS documentation and guides</p>
+                </a>
+                <a href="https://doc.rust-lang.org/book/" target="_blank" class="tool-card">
+                    <h3>Rust Docs</h3>
+                    <p>The Rust Programming Language book</p>
+                </a>
+                <a href="https://google.com" target="_blank" class="tool-card">
+                    <h3>Google</h3>
+                    <p>Search the web</p>
+                </a>
+                <a href="https://calendar.google.com" target="_blank" class="tool-card">
+                    <h3>Google Calendar</h3>
+                    <p>Manage your schedule</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="todo-section">
+            <h2>To-Do List</h2>
+            <div class="todo-input-container">
+                <input type="text" class="todo-input" id="todoInput" placeholder="Add a new task..." maxlength="100" />
+                <button class="add-btn" onclick="addTodo()">Add</button>
+            </div>
+            <div class="todo-list" id="todoList"></div>
+        </section>
+
+        <section class="calendar-section">
+            <h2>Calendar</h2>
+            <table class="calendar" id="calendar"></table>
+        </section>
+    </div>
+
+    <div class="container canvas-page" id="canvasPage">
+        <header class="canvas-header">
+            <div class="datetime-section">
+                <h1>Drawing Canvas</h1>
+            </div>
+            <div class="nav-tools">
+                <button class="nav-btn" onclick="showHomepage()">Back to Home</button>
+            </div>
+        </header>
+
+        <section class="canvas-section">
+            <div class="canvas-controls">
+                <input type="color" class="color-picker" id="colorPicker" value="#000000" title="Choose color" />
+                <input type="range" class="brush-size" id="brushSize" min="1" max="50" value="5" title="Brush size" />
+                <button class="canvas-tool-btn" onclick="clearCanvas()">Clear</button>
+                <button class="canvas-tool-btn" onclick="saveCanvas()">Save</button>
+            </div>
+            <div class="canvas-container">
+                <canvas id="drawingCanvas"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
