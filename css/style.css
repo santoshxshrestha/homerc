@@ -70,11 +70,12 @@ body {
 }
 
 .canvas-btn {
-    background: linear-gradient(45deg, #ff7043, #ff5722);
+    background: linear-gradient(45deg, #3554c1, #2b47a1);
+    color: white;
 }
 
 .canvas-btn:hover {
-    box-shadow: 0 5px 15px rgba(255, 112, 67, 0.4);
+    box-shadow: 0 5px 15px rgba(53, 84, 193, 0.4);
 }
 
 .quick-tools {
